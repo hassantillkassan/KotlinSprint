@@ -8,6 +8,5 @@ fun main () {
 
     seconds %= BASIS_TIME
     minutes %= BASIS_TIME
-
     println(String.format("%02d:%02d:%02d", hours, minutes, seconds))
 }
