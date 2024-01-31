@@ -9,4 +9,5 @@ fun main() {
     val averageMark = (studentMark1 + studentMark2 + studentMark3 + studentMark4) / 4
 
     print(String.format("%.2f", averageMark))
+
 }
