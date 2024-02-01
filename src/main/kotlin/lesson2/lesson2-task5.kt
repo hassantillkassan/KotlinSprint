@@ -8,4 +8,5 @@ fun main() {
     val depositPeriod = 20
 
     print(String.format("%.3f", investment * (interestRate).pow(depositPeriod)))
+
 }
