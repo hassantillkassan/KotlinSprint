@@ -12,6 +12,6 @@ fun main() {
     val numberOfCrate = 55
     val isWeatherFavorable = true
 
-    val sailingPrremit = (((isDamaged == IS_DAMAGED) and (crewNumber in MIN_CREW_NUMBER..RECOMMENDED_CREW_NUMBER) and (numberOfCrate >= MIN_NUMBER_OF_CRATE)) or ((isDamaged != IS_DAMAGED) and (crewNumber == RECOMMENDED_CREW_NUMBER) and (isWeatherFavorable == IS_WEATHER_FAVORABLE) and (numberOfCrate >= MIN_NUMBER_OF_CRATE)))
-    println("Разрешение на отправку корабля в плавание: $sailingPrremit")
+    val sailingPremit = (((isDamaged == IS_DAMAGED) and (crewNumber in MIN_CREW_NUMBER..RECOMMENDED_CREW_NUMBER) and (numberOfCrate > MIN_NUMBER_OF_CRATE)) or ((crewNumber == RECOMMENDED_CREW_NUMBER) and (isWeatherFavorable == IS_WEATHER_FAVORABLE) and (numberOfCrate >= MIN_NUMBER_OF_CRATE)))
+    println("Разрешение на отправку корабля в плавание: $sailingPremit")
 }
