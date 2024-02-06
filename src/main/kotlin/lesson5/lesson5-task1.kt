@@ -1,13 +1,14 @@
 package lesson5
 
-const val SIMPLE_EXAMPLE = "7 + 8"
-const val SIMPLE_EXAMPLE_SOLUTION = 15
-
 fun main() {
-    print("Пройдите капчу: $SIMPLE_EXAMPLE = ")
+    val exampleValue1 = 7
+    val exampleValue2 = 8
+    val correctAnswer = exampleValue1 + exampleValue2
+
+    print("Пройдите капчу: $exampleValue1 + $exampleValue2 = ")
     val captcha = readln().toInt()
 
-    val programmeEntry = if (captcha == SIMPLE_EXAMPLE_SOLUTION) "Добро пожаловать!"
+    val programmeEntry = if (captcha == correctAnswer) "Добро пожаловать!"
     else "Доступ запрещён"
 
     println(programmeEntry)
