@@ -1,15 +1,12 @@
 package lesson6
 
+import java.util.concurrent.TimeUnit
+
 fun main() {
-    print("Добро пожаловать в Таймер! Сколько секунд вы хотите засечь: ")
-    var secondsCounter = readln().toInt()
+    print("Добро пожаловать в Простой Таймер! Сколько секунд вы хотите засечь: ")
+    val secondsCounter = readln().toLong()
 
-    var iterationCount = 0
+    TimeUnit.SECONDS.sleep(secondsCounter)
 
-    while (secondsCounter > 0) {
-        println("Осталось ${secondsCounter--} сек")
-        Thread.sleep(1000)
-        iterationCount++
-    }
-    println("Прошло $iterationCount секунд")
+    println("Прошло $secondsCounter секунд")
 }
