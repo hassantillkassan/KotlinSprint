@@ -3,15 +3,15 @@ package lesson7
 import kotlin.random.Random
 
 fun main() {
-    val pwChar: CharRange = 'a'.. 'z'
+    val pwChar: CharRange = 'a'..'z'
+    val pwRange = 1..6
 
     var generatedPassword = ""
-    val pwRange = 1.. 3
+
 
     for (i in pwRange) {
-        generatedPassword += pwChar.random().toString()
-        generatedPassword += Random.nextInt(0, 9)
+        if (i % 2 == 1) generatedPassword += pwChar.random()
+        else generatedPassword += Random.nextInt(0, 9)
     }
-
     println(generatedPassword)
 }
