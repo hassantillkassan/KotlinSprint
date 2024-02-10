@@ -7,7 +7,6 @@ fun main() {
     val evenNumberRange = 0..enteredNumber step 2
 
     for (i in evenNumberRange) {
-        if (i == 0) continue
         println(i)
     }
 }
