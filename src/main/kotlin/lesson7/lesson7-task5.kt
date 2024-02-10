@@ -17,20 +17,13 @@ fun main() {
         pwLength = readln().toInt()
     }
 
-    val pwCharRange = 'a'..'z'
-    val pwCharUppercaseRange = 'A'..'Z'
-    val pwNumberRange = 0..9
+    val allChars = ('a'..'z') + ('A'..'Z') + (0..9)
     val pwRange = 1..pwLength
 
     var generatedPassword = ""
 
     for (i in pwRange) {
-        val randomCharacterList = listOf(
-            pwCharRange.random().toString(),
-            pwCharUppercaseRange.random().toString(),
-            pwNumberRange.random().toString()
-        )
-        generatedPassword += randomCharacterList.random()
+        generatedPassword += allChars.random()
     }
     println(generatedPassword)
 }
