@@ -9,6 +9,5 @@ fun main() {
     for (i in 1..7) adViews += Random.nextInt(0, 100)
     println(adViews.contentToString())
 
-    for (i in adViews.indices) numberOfViews += adViews[i]
-    println("Просмотров рекламы за неделю: $numberOfViews")
+    println("Просмотров рекламы за неделю: ${adViews.sum()}")
 }
