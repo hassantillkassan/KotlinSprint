@@ -10,10 +10,12 @@ fun main() {
     val enteredIngredient = readlnOrNull()
 
     for (i in arrayOfSandwichIngredients) {
-        if (enteredIngredient !in arrayOfSandwichIngredients) {
+        if (i == enteredIngredient) {
+            println("Ингредиент $enteredIngredient в рецепте есть")
+            return
+        } else {
             println("Такого ингредиента в рецепте нет")
             return
         }
     }
-    println("Ингредиент $enteredIngredient в рецепте есть")
 }
