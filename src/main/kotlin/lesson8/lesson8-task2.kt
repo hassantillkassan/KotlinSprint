@@ -2,7 +2,7 @@ package lesson8
 
 fun main() {
     val arrayOfSandwichIngredients = arrayOf(
-        "bread", "tomato", "cucumber", "tomato",
+        "bread", "tomato", "cucumber",
         "ham", "sauce", "egg"
     )
 
@@ -13,9 +13,7 @@ fun main() {
         if (i == enteredIngredient) {
             println("Ингредиент $enteredIngredient в рецепте есть")
             return
-        } else {
-            println("Такого ингредиента в рецепте нет")
-            return
         }
     }
+    println("Такого ингредиента в рецепте нет")
 }
