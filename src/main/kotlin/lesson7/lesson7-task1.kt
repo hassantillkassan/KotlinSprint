@@ -6,7 +6,7 @@ fun main() {
     val pwChar: CharRange = 'a'..'z'
     val pwRange = 1..6
 
-    var generatedPassword = ""
+    var generatedPassword = String()
 
 
     for (i in pwRange) {
