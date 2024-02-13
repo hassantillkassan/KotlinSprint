@@ -5,14 +5,14 @@ fun main() {
         "bread", "tomato", "cucumber",
         "ham", "sauce", "egg"
     )
-    var enteredIngredient: String
 
     println("Наш список ингредиентов: ${arrayOfSandwichIngredients.contentToString()}")
+    var enteredIngredient = String()
 
-    do {
+    while (arrayOfSandwichIngredients.indexOf(enteredIngredient) == -1) {
         print("Введите ингредиент, который хотите заменить (на английском): ")
         enteredIngredient = readln()
-    } while (enteredIngredient !in arrayOfSandwichIngredients)
+    }
 
     print("Введите ингредиент, на который хотите заменить (на английском): ")
     val ingredientSubstitution = readln()
