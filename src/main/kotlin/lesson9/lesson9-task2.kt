@@ -7,12 +7,12 @@ fun main() {
         "В рецепте есть базовые ингредиенты: $listOfIngredients\n" +
                 "Желаете добавить ещё? Введите \"да\" или \"нет\": "
     )
-    val userChoice = readln()
+    var userEntered = readln()
 
-    if (userChoice == "да") {
+    if (userEntered.equals("да", ignoreCase = true)) {
         print("Какой ингредиент вы хотите добавить? Введите название: ")
-        val enteredIngredient = readln()
-        listOfIngredients.add(enteredIngredient)
+        userEntered = readln()
+        listOfIngredients.add(userEntered)
     } else return
 
     println("Теперь в рецепте есть следующие ингредиенты: $listOfIngredients")
