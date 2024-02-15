@@ -1,15 +1,21 @@
 package lesson9
 
+
 fun main() {
-    val mapOfIngredients = mapOf("Яиц" to 2, "молока" to 50, "масла" to 15)
+    val listOfIngredients = listOf(2, 50, 15)
 
     print("Введите количество порций, которое хотите приготовить: ")
     val enteredNumberOfPortions = readln().toInt()
 
     print("На $enteredNumberOfPortions порций вам понадобится: ")
 
-    mapOfIngredients.forEach {
-        if (it.key == "масла") print("${it.key} – ${it.value * enteredNumberOfPortions}.")
-        else print("${it.key} – ${it.value * enteredNumberOfPortions}, ")
+    val userListOfIngredients = listOfIngredients.map { it * enteredNumberOfPortions }
+    userListOfIngredients.forEachIndexed() { index, element ->
+        when (index) {
+            0 -> print("Яиц – $element, ")
+            1 -> print("молока – $element, ")
+            2 -> print("сливочного масла – $element")
+        }
     }
 }
+
