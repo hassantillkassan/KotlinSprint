@@ -15,11 +15,13 @@ fun main() {
 
     val sortedListOfIngredient = listOfIngredients.sorted()
 
-    sortedListOfIngredient.forEachIndexed() { index, element ->
-        when (index) {
-            0 -> print("${element.capitalize()}, ")
-            4 -> print("$element.")
-            else -> print("$element, ")
-        }
-    }
+
+    println(
+        sortedListOfIngredient[0].replaceFirstChar(Char::uppercaseChar) +
+                sortedListOfIngredient.drop(1).joinToString(
+                    prefix = ", ",
+                    separator = ", ",
+                    postfix = "."
+                )
+    )
 }
