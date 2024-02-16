@@ -17,11 +17,9 @@ fun main() {
 
 
     println(
-        sortedListOfIngredient[0].replaceFirstChar(Char::uppercaseChar) +
-                sortedListOfIngredient.drop(1).joinToString(
-                    prefix = ", ",
-                    separator = ", ",
-                    postfix = "."
-                )
+        sortedListOfIngredient.joinToString(
+            separator = ", ",
+            postfix = "."
+        ).replaceFirstChar(Char::uppercaseChar)
     )
 }
