@@ -9,4 +9,4 @@ fun main() {
     else println("Победила машина")
 }
 
-fun rollDice(): Int = (1..6).random()
+private fun rollDice(): Int = (1..6).random()
