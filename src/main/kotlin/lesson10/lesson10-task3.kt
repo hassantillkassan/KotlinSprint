@@ -8,16 +8,12 @@ fun main() {
 }
 
 fun generatePassword(passLength: Int) {
-    val charset = listOf(
-        '!', '"', '#', '$', '%',
-        '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ' '
-    )
+    val charset = ' '..'/'
     val numset = 0..9
 
-    val passRange = 1..passLength
     var generatedPassword = String()
 
-    for (i in passRange) {
+    for (i in 1..passLength) {
         generatedPassword += numset.random()
         generatedPassword += charset.random()
     }
