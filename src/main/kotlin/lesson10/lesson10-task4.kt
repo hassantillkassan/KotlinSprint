@@ -1,28 +1,29 @@
 package lesson10
 
-private var winCount = 0
-
 fun main() {
     var userTurn: Int
     var machineTurn: Int
     var userChoice: String
+    var gameResult = 0
 
     do {
         userTurn = rollDice()
         machineTurn = rollDice()
 
-        playRound(userTurn, machineTurn)
+        gameResult += playRound(userTurn, machineTurn)
 
         print("Хотите бросить кости еще раз? Введите \"Да\" или \"Нет\": ")
         userChoice = readln()
     } while (userChoice.equals("Да", ignoreCase = true))
 
-    println("Игра окончена. Вы одержали победу в $winCount партиях")
+    println("Игра окончена. Вы одержали победу в $gameResult партиях")
 }
 
 private fun rollDice(): Int = (1..6).random()
 
-private fun playRound(userValue: Int, machineValue: Int) {
+private fun playRound(userValue: Int, machineValue: Int): Int {
+    var winCount = 0
+
     when {
         userValue > machineValue -> {
             println("Победило человечество")
@@ -32,4 +33,5 @@ private fun playRound(userValue: Int, machineValue: Int) {
         userValue < machineValue -> println("Победила машина")
         else -> println("Победила ничья")
     }
+    return winCount
 }
