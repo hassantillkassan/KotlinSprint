@@ -22,16 +22,14 @@ fun main() {
 private fun rollDice(): Int = (1..6).random()
 
 private fun playRound(userValue: Int, machineValue: Int): Int {
-    var winCount = 0
-
     when {
         userValue > machineValue -> {
             println("Победило человечество")
-            winCount++
+            return 1
         }
 
         userValue < machineValue -> println("Победила машина")
         else -> println("Победила ничья")
     }
-    return winCount
+    return 0
 }
