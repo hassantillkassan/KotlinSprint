@@ -22,17 +22,16 @@ fun main() {
         mail = "shaker-shakeRR_@yandex.ru",
     )
 
-    val user1Details = """
+    println("""
         |Вот, что известно о пользователе с id = ${user1.id}
         |Его логин: ${user1.login}
         |Его почта: ${user1.mail.subSequence(0..4)}***@${user1.mail.substringAfterLast("@")}
-    """.trimMargin()
+        |
+    """.trimMargin())
 
-    val user2Details = """
+    println("""
         |Вот, что известно о пользователе с id = ${user2.id}
         |Его логин: ${user2.login}
         |Его почта: ${(user2.mail).subSequence(0..4)}***@${user2.mail.substringAfterLast("@")}
-    """.trimMargin()
-
-    println(user1Details + "\n\n" + user2Details)
+    """.trimMargin())
 }
