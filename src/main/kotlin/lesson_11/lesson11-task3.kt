@@ -3,14 +3,9 @@ package lesson_11
 class Room(
     val cover: String,
     val name: String,
-    private val listOfMembers: MutableList<memberAvatar> = mutableListOf()
+    private val listOfMembers: MutableList<MemberAvatar> = mutableListOf()
 ) {
-    data class memberAvatar(
-        val nickname: String,
-        var status: String,
-    )
-
-    fun addMember(member: memberAvatar) = listOfMembers.add(member)
+    fun addMember(member: MemberAvatar) = listOfMembers.add(member)
 
     fun updateMemberStatus(memberNickname: String, memberStatus: String) {
         listOfMembers.forEach {
@@ -19,7 +14,7 @@ class Room(
         }
     }
 
-    fun getMemberStatusByLongPressingAvatar(member: memberAvatar) {
+    fun getMemberStatusByLongPressingAvatar(member: MemberAvatar) {
         println(
             "Пользователь ${member.nickname} в комнате \"$name\", " +
                     "его статус: ${listOfMembers.joinToString { it.status }}"
@@ -27,12 +22,17 @@ class Room(
     }
 }
 
+data class MemberAvatar(
+    val nickname: String,
+    var status: String,
+)
+
 fun main() {
     val room1 = Room(
         cover = "src/img/summer_cafe",
         name = "С другом в летней кафешке",
     )
-    val member1 = Room.memberAvatar(
+    val member1 = MemberAvatar(
         nickname = "Pashok",
         status = "разговаривает"
     )
