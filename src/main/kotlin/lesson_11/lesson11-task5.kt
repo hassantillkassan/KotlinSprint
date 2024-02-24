@@ -4,16 +4,13 @@ class Forum(
     private val listOfUsers: MutableList<ForumMember> = mutableListOf(),
     private val listOfMessage: MutableList<ForumMessage> = mutableListOf(),
 ) {
-    fun createNewUser(name: String) : ForumMember {
-        var generatedId = 1
+    private var generatedId = 0
+    fun createNewUser(name: String): ForumMember {
+        generatedId++
 
-        listOfUsers.map {
-            if (generatedId == it.userId) generatedId++
-        }
-
-        val forumMember = ForumMember (
-        userId = generatedId,
-        userName = name,
+        val forumMember = ForumMember(
+            userId = generatedId,
+            userName = name,
         )
 
         listOfUsers.add(forumMember)
@@ -21,42 +18,40 @@ class Forum(
         return forumMember
     }
 
-    fun createNewMessage(id: Int) : ForumMessage {
+    fun createNewMessage(id: Int): ForumMessage {
         var enteredMessage = String()
 
-        listOfUsers.forEach {
-            if (it.userId == id) {
-                print("Введите ваше сообщение: ")
-                enteredMessage = readln()
+        do {
+            listOfUsers.forEach {
+                if (it.userId == id) {
+                    print("Введите ваше сообщение: ")
+                    enteredMessage = readln()
+                }
             }
-        }
+        } while (enteredMessage.isEmpty())
 
-        val forumMessage = ForumMessage (
+        val forumMessage = ForumMessage(
             authorId = id,
             message = enteredMessage,
         )
 
         listOfMessage.add(forumMessage)
-
-       return forumMessage
+        return forumMessage
     }
 
     fun printThread() {
-        listOfUsers.forEach {listOfUsersItem ->
-            listOfMessage.forEach {listOfMessageItem ->
-                if (listOfUsersItem.userId == listOfMessageItem.authorId)
-                    println("${listOfUsersItem.userName}: ${listOfMessageItem.message}")
-            }
+        listOfMessage.forEach {
+            println("${listOfUsers[it.authorId - 1].userName}: ${it.message}")
         }
     }
 }
 
-data class ForumMember (
+data class ForumMember(
     val userId: Int,
     val userName: String,
 )
 
-data class ForumMessage (
+data class ForumMessage(
     val authorId: Int,
     val message: String
 )
