@@ -4,7 +4,7 @@ class RecipeCategory(
     val categoryName: String,
     val cover: String,
     val id: Int,
-    private val dishName: String,
+    val dishName: String,
     val dishImage: String,
 ) {
     fun moveToRecipeCategories() {
@@ -21,11 +21,11 @@ class RecipeCategory(
 }
 
 class Recipe(
-    private val recipeName: String,
-    private var numberOfPortions: Int,
+    val recipeName: String,
+    var numberOfPortions: Int,
     val listOfIngredients: List<Ingredient> = listOf(),
     val cookingMethod: String,
-    private var inFavorites: Boolean = false,
+    var inFavorites: Boolean = false,
 ) {
     fun addToFavorites() {
         println("Рецепт блюда $recipeName добавлен в \"Избранное\"")
