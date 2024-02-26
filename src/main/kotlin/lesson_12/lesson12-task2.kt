@@ -1,21 +1,27 @@
 package lesson_12
 
 class WeatherTracking1(
-    var dayTemperature: Int? = null,
-    var nightTemperature: Int? = null,
-    var dailyPrecipitation: Boolean? = null,
+    _dayTemperature: Int,
+    _nightTemperature: Int,
+    _dailyPrecipitation: Boolean,
 ) {
+    val dayTemperature = _dayTemperature
+    val nightTemperature = _nightTemperature
+    val dailyPrecipitation = _dailyPrecipitation
+
     fun printWeatherByDay() {
-        if (dayTemperature != null) println("Температура днём: $dayTemperature")
-        if (nightTemperature != null) println("Температура ночью: $nightTemperature")
-        if (dailyPrecipitation != null) println("Наличие осадков в течение суток: $dailyPrecipitation")
+        println(
+            """
+                |Температура днём: $dayTemperature
+                |Температура ночью: $nightTemperature
+                |Наличие осадков в течение суток: $dailyPrecipitation
+            """.trimMargin()
+        )
     }
 }
 
 fun main() {
-    val day1 = WeatherTracking1(
-        nightTemperature = 9,
-    )
+    val day1 = WeatherTracking1(21, 10, false)
 
     day1.printWeatherByDay()
 }
