@@ -1,11 +1,9 @@
 package lesson_12
 
-class WeatherTracking(
-    var dayTemperature: Int,
-    var nightTemperature: Int,
-    var dailyPrecipitation: Boolean,
-) {
-    constructor() : this(23, 12, true)
+class WeatherTracking() {
+    var dayTemperature: Int = 23
+    var nightTemperature: Int = 11
+    var dailyPrecipitation: Boolean = false
 
     fun printWeatherByDay() {
         println(
@@ -27,7 +25,7 @@ fun main() {
     val day2 = WeatherTracking()
 
     day2.nightTemperature = 7
-    day2.dailyPrecipitation = false
+    day2.dailyPrecipitation = true
 
     day1.printWeatherByDay()
     day2.printWeatherByDay()
