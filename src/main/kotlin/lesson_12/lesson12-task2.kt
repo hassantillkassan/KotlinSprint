@@ -1,13 +1,10 @@
 package lesson_12
 
 class WeatherTracking1(
-    _dayTemperature: Int,
-    _nightTemperature: Int,
-    _dailyPrecipitation: Boolean,
+    val dayTemperature: Int,
+    val nightTemperature: Int,
+    val dailyPrecipitation: Boolean,
 ) {
-    val dayTemperature = _dayTemperature
-    val nightTemperature = _nightTemperature
-    val dailyPrecipitation = _dailyPrecipitation
 
     fun printWeatherByDay() {
         println(
@@ -21,7 +18,7 @@ class WeatherTracking1(
 }
 
 fun main() {
-    val day1 = WeatherTracking1(21, 10, false)
+    val day1 = WeatherTracking1(21, 6, false)
 
     day1.printWeatherByDay()
 }
