@@ -7,15 +7,15 @@ class WeatherTracking2(
     _nightTemperature: Int,
     _dailyPrecipitation: Boolean,
 ) {
-    val dayTemperature = _dayTemperature
-    val nightTemperature = _nightTemperature
+    val dayTemperature = _dayTemperature + ABSOLUTE_ZERO
+    val nightTemperature = _nightTemperature + ABSOLUTE_ZERO
     val dailyPrecipitation = _dailyPrecipitation
 
     fun printWeatherByDay() {
         println(
             """
-                |Температура днём (в Цельсиях): ${dayTemperature + ABSOLUTE_ZERO}
-                |Температура ночью (в Цельсиях): ${nightTemperature + ABSOLUTE_ZERO}
+                |Температура днём (в Цельсиях): $dayTemperature
+                |Температура ночью (в Цельсиях): $nightTemperature
                 |Наличие осадков в течение суток: $dailyPrecipitation
             """.trimMargin()
         )
