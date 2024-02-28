@@ -31,19 +31,18 @@ fun main() {
         )
     }
 
-    listOfDays.map {
+    listOfDays.forEach() {
         listOfDayTemperature.add(it.dayTemperature)
         listOfNightTemperature.add(it.nightTemperature)
         listOfDailyPrecipitation.add(it.dailyPrecipitation)
     }
 
-    val averageTemps = listOfDayTemperature.average() + listOfNightTemperature.average()
-    var numberOfPrecipitationDays = 0
+    val averageTemps = (listOfDayTemperature.average() + listOfNightTemperature.average()) / 2
 
-    listOfDailyPrecipitation.map {
-        if (it) numberOfPrecipitationDays++
-    }
+    val numberOfPrecipitationDays = listOfDailyPrecipitation.filter { it }.size
 
-    println("Среднее значение температур в течение суток: $averageTemps\n" +
-            "Количество дней с осадками: $numberOfPrecipitationDays")
+    println(
+        "Среднее значение температур в течение суток: ${String.format("%.2f", averageTemps)}\n" +
+                "Количество дней с осадками: $numberOfPrecipitationDays"
+    )
 }
