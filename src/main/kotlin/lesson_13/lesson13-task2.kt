@@ -1,8 +1,8 @@
 package lesson_13
 
 class PhoneBook2(
-    val name: String?,
-    val phoneNumber: Long?,
+    val name: String,
+    val phoneNumber: Long,
     val company: String? = null,
 ) {
     fun printContactDetails() {
@@ -19,7 +19,7 @@ fun main() {
     val contact2 = PhoneBook2(
         name = "Peter",
         phoneNumber = 678909,
-        company = "Oriflame"
+        company = "Oriflame",
     )
 
     contact1.printContactDetails()
