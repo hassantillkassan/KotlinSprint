@@ -38,9 +38,8 @@ fun main() {
         }
     }
 
-    listOfContacts.forEach {
-        if (it.company != null) println(it.company)
-    }
+    val listOfExistingCompanies = listOfContacts.mapNotNull { it.company }.toSet()
+    println(listOfExistingCompanies.joinToString())
 }
 
 fun generateRandomPhoneNumber(): Long {
