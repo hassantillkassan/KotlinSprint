@@ -1,8 +1,8 @@
 package lesson_13
 
 data class PhoneBook(
-    val name: String?,
-    val phoneNumber: Long?,
+    val name: String,
+    val phoneNumber: Long,
     val company: String?,
 )
 
