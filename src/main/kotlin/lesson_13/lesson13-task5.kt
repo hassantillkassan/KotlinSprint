@@ -8,7 +8,6 @@ data class PhoneBook5(
 
 fun main() {
     val contact: PhoneBook5
-    var errorCounter = 0
 
     println("Введите имя, номер телефона и компанию контакта")
 
@@ -19,9 +18,6 @@ fun main() {
             readln(),
         )
     } catch (e: NumberFormatException) {
-        println("Произошла ошибка ${e::class.simpleName}")
-        errorCounter++
-    } finally {
-        println("Программа завершила свою работу с $errorCounter ошибками")
+        println("Произошла ошибка: ${e::class.simpleName}")
     }
 }
