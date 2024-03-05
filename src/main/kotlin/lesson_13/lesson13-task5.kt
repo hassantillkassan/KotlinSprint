@@ -7,28 +7,21 @@ data class PhoneBook5(
 )
 
 fun main() {
-    val invalidCharset = (' '..'/') + ('A'..'Z') + ('a'..'z')
     val contact: PhoneBook5
+    var errorCounter = 0
 
-    println("Введите номер телефона контакта, который хотите создать")
-    val enteredNumber = readln()
+    println("Введите имя, номер телефона и компанию контакта")
 
-
-    invalidCharset.forEach{
-        if (enteredNumber.contains(it)) {
-            println(
-                "Ошибка: \"NumberFormatException\"\n" +
-                        "Ваш номер телефона содержит недопустимые символы"
-            )
-            return
-        }
-
+    try {
+        contact = PhoneBook5(
+            readln(),
+            readln().toLong(),
+            readln(),
+        )
+    } catch (e: NumberFormatException) {
+        println("Произошла ошибка ${e::class.simpleName}")
+        errorCounter++
+    } finally {
+        println("Программа завершила свою работу с $errorCounter ошибками")
     }
-
-    println("Введите имя и компанию контакта")
-    contact = PhoneBook5(
-        readln(),
-        enteredNumber.toLong(),
-        readln(),
-    )
 }
