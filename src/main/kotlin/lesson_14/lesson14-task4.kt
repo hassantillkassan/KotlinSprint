@@ -12,7 +12,7 @@ class Planet(
     name: String,
     isAtmosphere: Boolean,
     isSuitableForLanding: Boolean,
-    val listOfSatellites: MutableList<Satellite> = mutableListOf(),
+    val listOfSatellites: List<Satellite> = listOf(),
 ) : CelestialBody(name, isAtmosphere, isSuitableForLanding) {
 
 }
@@ -35,19 +35,18 @@ fun main() {
     val satellite2 = Satellite(
         "satellite2",
         true,
-        false
+        false,
     )
-
-    val listOfSatellites: MutableList<Satellite> = mutableListOf(satellite1, satellite2)
 
     val planet1 = Planet(
         "planet1",
         true,
         true,
-        listOfSatellites,
+        listOfSatellites = listOf(satellite1, satellite2),
     )
 
-    println("Название планеты ${planet1.name}\n" +
-            "Её спутники: ${planet1.listOfSatellites.joinToString(", ") { it.name }}"
+    println(
+        "Название планеты: ${planet1.name}\n" +
+                "Её спутники: ${planet1.listOfSatellites.joinToString(", ") { it.name }}"
     )
 }
