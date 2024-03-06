@@ -3,6 +3,9 @@ package lesson_14
 import kotlin.math.PI
 import kotlin.math.pow
 
+const val COLOR_WHITE = "white"
+const val COLOR_BLACK = "black"
+
 abstract class Figure(
     val color: String,
 ) {
@@ -43,32 +46,31 @@ class Rectangle(
 
 fun main() {
 
-
     val circle1 = Circle(
-        "white",
+        COLOR_WHITE,
         3.5,
     )
     val circle2 = Circle(
-        "black",
+        COLOR_BLACK,
         2.0,
     )
     val circle3 = Circle(
-        "white",
+        COLOR_WHITE,
         5.7,
     )
 
     val rectangle1 = Rectangle(
-        "white",
+        COLOR_WHITE,
         3.5,
         2.7,
     )
     val rectangle2 = Rectangle(
-        "black",
+        COLOR_BLACK,
         4.4,
         3.0
     )
 
-    val listOfFigures: MutableList<Figure> = mutableListOf(
+    val listOfFigures: List<Figure> = listOf(
         circle1,
         circle2,
         circle3,
@@ -80,7 +82,7 @@ fun main() {
     var sumOfPerimeters = 0.0
 
     listOfFigures.forEach {
-        if (it.color == "white")
+        if (it.color == COLOR_WHITE)
             sumOfAreas += it.calculateArea()
         else
             sumOfPerimeters += it.calculatePerimeter()
