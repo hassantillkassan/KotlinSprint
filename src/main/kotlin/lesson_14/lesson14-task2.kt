@@ -6,7 +6,8 @@ open class LinerShip2(
     val payload: Int = 300,
     val capacity: Int = 900,
 ) {
-    fun sideOutGangway() {
+
+    open fun startLoading() {
         println("Горизонтальный трап выдвинут со шкафута")
     }
 
@@ -27,7 +28,7 @@ class CargoShip2(
     name: String,
 ) : LinerShip2(name, speed = 300, payload = 700) {
 
-    fun activateLoadingCrane() {
+    override fun startLoading() {
         println("Погрузочный кран активирован")
     }
 
@@ -48,7 +49,7 @@ class Icebreaker2(
     val isBreakingIce: Boolean = true,
 ) : LinerShip2(name, speed = 190, capacity = 500) {
 
-    fun openGates() {
+    override fun startLoading() {
         println("Ворота со стороны кормы открыты")
     }
 
@@ -69,9 +70,9 @@ fun main() {
     val cargo2 = CargoShip2("cargo2")
     val icebreaker2 = Icebreaker2("icebreaker2")
 
-    liner2.sideOutGangway()
-    cargo2.activateLoadingCrane()
-    icebreaker2.openGates()
+    liner2.startLoading()
+    cargo2.startLoading()
+    icebreaker2.startLoading()
 
     println()
 
