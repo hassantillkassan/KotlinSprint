@@ -1,87 +1,83 @@
 package lesson_14
 
-open class Chat(
-    val listOfMessages: MutableList<Message> = mutableListOf(),
-    val listOfChildMessages: MutableList<ChildMessage> = mutableListOf(),
-) {
+import kotlin.reflect.KClass
 
-    open fun addMessage(message: String, name: String): Message {
-    }
+class Chat {
 
-    open fun addThreadMessage(message: String, name: String, parentMessageId: Int): ChildMessage {
-    }
+    val listOfMessages: MutableList<Message> = mutableListOf()
+    var idCounter = 1
 
-    fun printChat() {
-        println(listOfMessages.groupBy { it.id })
-        println(listOfChildMessages.groupBy { it.parentMessageId })
-    }
-}
-
-class Message(
-    val id: Int,
-    val message: String = String(),
-    val name: String = String(),
-    listOfMessages: MutableList<Message> = mutableListOf(),
-) : Chat(listOfMessages = listOfMessages) {
-
-    override fun addMessage(message: String, name: String): Message {
+    fun addMessage(text: String, name: String) {
         val message = Message(
-            id = id,
-            message = message,
+            id = idCounter,
             name = name,
+            text = text,
         )
 
         listOfMessages.add(message)
-
-        return message
+        idCounter++
     }
-}
 
-class ChildMessage(
-    val id: Int,
-    val parentMessageId: Int = 0,
-    val childMessage: String = String(),
-    val name: String = String(),
-    listOfChildMessages: MutableList<ChildMessage> = mutableListOf(),
-) : Chat(listOfChildMessages = listOfChildMessages) {
-
-    override fun addThreadMessage(message: String, name: String, parentMessageId: Int): ChildMessage {
+    fun addThreadMessage(text: String, name: String, parentMessageId: Int) {
         val childMessage = ChildMessage(
-            id = id,
+            id = idCounter,
             parentMessageId = parentMessageId,
-            childMessage = message,
             name = name,
+            childText = text,
         )
 
-        listOfChildMessages.add(childMessage)
+        val index = listOfMessages.indexOfFirst { it.id == parentMessageId }
+        listOfMessages.add((index + 1), childMessage)
 
-        return childMessage
+        idCounter++
+    }
+
+    fun printChat() {
+
+        val groupedByIds = listOfMessages.groupBy { it.id }
+        val groupedByParentIds: Map<KClass<*>, List<Message>> = listOfMessages. groupBy{ it.javaClass.kotlin }
+
+
+        println(groupedByParentIds[ChildMessage::class]?.joinToString { it.text })
+
+
+//        for (message in groupedByIds) {
+//            println(message.value.joinToString { it.text })
+//
+//            for (parentMessage in groupedByParentIds[ChildMessage::class]!!) {
+//                println(parentMessage.text)
+//            }
+//
+//            println()
+//        }
+
     }
 }
+
+open class Message(
+    val id: Int,
+    val name: String,
+    val text: String,
+)
+
+class ChildMessage(
+    id: Int,
+    val parentMessageId: Int,
+    name: String,
+    childText: String,
+) : Message(id, name, childText)
 
 fun main() {
 
-    val message1 = Message(1)
-    message1.addMessage("Hello", "Alex07")
+    val chat1 = Chat()
 
-    val message2 = Message(2)
-    message2.addMessage("Hi everyone", "Serega")
+    chat1.addMessage("Hey everyone!", "Alex")
+    chat1.addMessage("Hi, can you tell me where is the best place to learn Kotlin?", "Oleg")
+    chat1.addMessage("Is there anyone here?", "Pavel")
 
-    val message3 = Message(3)
-    message3.addMessage("Wassup boyz", "Kirill")
+    chat1.addThreadMessage("Hello, Alex! Wassup?", "Zurab", 1)
+    chat1.addThreadMessage("Check out KotlinSprint", "Proger007", 2)
 
-    val childMessage1 = ChildMessage(4)
-    childMessage1.addThreadMessage("Hey, Alex! What's new?", "Bo$$", 1)
-
-    val childMessage2 = ChildMessage(5)
-    childMessage2.addThreadMessage("Sergio! Haven't seen you for ages, bro", "Oleg Mongol",
-        2)
-
-    val chat1 = Chat(
-        listOfMessages = mutableListOf(message1, message2, message3),
-        listOfChildMessages = mutableListOf(childMessage1, childMessage2)
-    )
-
-    println(childMessage1.childMessage)
     chat1.printChat()
+
 }
