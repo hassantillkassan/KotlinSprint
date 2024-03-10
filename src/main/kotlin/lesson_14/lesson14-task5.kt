@@ -1,10 +1,9 @@
 package lesson_14
 
-import kotlin.reflect.KClass
-
 class Chat {
 
     val listOfMessages: MutableList<Message> = mutableListOf()
+    val listOfChildMessage: MutableList<ChildMessage> = mutableListOf()
     var idCounter = 1
 
     fun addMessage(text: String, name: String) {
@@ -26,30 +25,26 @@ class Chat {
             childText = text,
         )
 
-        val index = listOfMessages.indexOfFirst { it.id == parentMessageId }
-        listOfMessages.add((index + 1), childMessage)
+//        val index = listOfMessages.indexOfFirst { it.id == parentMessageId }
+//        listOfMessages.add((index + 1), childMessage)
 
+        listOfChildMessage.add(childMessage)
         idCounter++
     }
 
     fun printChat() {
-
         val groupedByIds = listOfMessages.groupBy { it.id }
-        val groupedByParentIds: Map<KClass<*>, List<Message>> = listOfMessages. groupBy{ it.javaClass.kotlin }
+        val groupByParentIds = listOfChildMessage.groupBy { it.parentMessageId }
 
+        for (message in groupedByIds) {
+            println(message.value.joinToString { it.text })
 
-        println(groupedByParentIds[ChildMessage::class]?.joinToString { it.text })
-
-
-//        for (message in groupedByIds) {
-//            println(message.value.joinToString { it.text })
-//
-//            for (parentMessage in groupedByParentIds[ChildMessage::class]!!) {
-//                println(parentMessage.text)
-//            }
-//
-//            println()
-//        }
+            for (childMessage in groupByParentIds) {
+                if (message.key == childMessage.key)
+                    println(childMessage.value.joinToString { it.text })
+            }
+            println()
+        }
 
     }
 }
