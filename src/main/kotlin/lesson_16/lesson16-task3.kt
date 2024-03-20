@@ -1,30 +1,20 @@
 package lesson_16
 
-class User() {
+class User(
+    val login: String,
+) {
 
-    val login = "Captain"
-    private val password = "price07"
+    private var password = String()
 
-    fun runValidation(inputData: String): Boolean {
-        val splitedLine = inputData.split(" ")
-
-        return if (login.equals(splitedLine[0]))
-            password.equals(splitedLine[1])
-        else false
-
-    }
-
-    init {
-        println(
-            "Для запуска валидации воспользуйтесь методом \"runValidation()\"\n" +
-                    "Логин и парроль вводите через пробел\n"
-        )
+    fun runValidation(inputPassword: String): Boolean {
+        password = "price07"
+        return (inputPassword == password)
     }
 }
 
 fun main() {
 
-    val user1 = User()
+    val user1 = User("Captain")
 
-    println(user1.runValidation("${user1.login} price07"))
+    println(user1.runValidation("price07"))
 }
