@@ -19,17 +19,22 @@ class Player(
     }
 
     fun getHeal(healingReceived: Int) {
-        if ((health + healingReceived) <= 100) health += healingReceived
-        else health = 100
+        when (impactForce != 0) {
+            true -> {
+                if ((health + healingReceived) <= 100) health += healingReceived
+                else health = 100
+                println("Вы вылечились. Остаток здоровья: $health")
+            }
 
-        println("Вы вылечились. Остаток здоровья: $health")
+            else -> println("Лечение невозможно. Игрок мёртв")
+        }
     }
 
     private fun killPlayer() {
         health = 0
         impactForce = 0
 
-        println("Игрок: $name: Здоровье - $health, Сила - $impactForce. Игра окончена")
+        println("Здоровье - $health, Сила - $impactForce. Игрок $name мёртв")
     }
 }
 
@@ -41,4 +46,5 @@ fun main() {
     player1.getHeal(30)
     player1.takeDamage(50)
     player1.takeDamage(50)
+    player1.getHeal(20)
 }
