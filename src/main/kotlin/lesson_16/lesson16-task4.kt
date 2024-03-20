@@ -1,25 +1,23 @@
 package lesson_16
 
-class Order {
+class Order(
+    private val number: Int = (1..100).random(),
+    private var readyStatus: String = "Prepared",
+) {
 
-    private val number = (1..100).random()
-    private var isReady = false
 
-    private fun changeOrderStatus(newStatus: Boolean) {
-        isReady = newStatus
-        println("Статус готовности заказа номер $number обновлён на $isReady")
+    private fun changeOrderStatus(newStatus: String) {
+        readyStatus = newStatus
+        println("Статус готовности заказа номер $number обновлён на $readyStatus")
     }
 
-    fun contactManager(inputStatus: Boolean): Boolean {
-        return inputStatus.also {
-            changeOrderStatus(it)
-        }
+    fun contactManager(inputStatus: String) {
+        return changeOrderStatus(inputStatus)
     }
 }
 
 fun main() {
 
     val order1 = Order()
-
-    order1.contactManager(true)
+    order1.contactManager("Ready")
 }
