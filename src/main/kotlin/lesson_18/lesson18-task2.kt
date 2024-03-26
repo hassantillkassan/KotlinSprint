@@ -1,31 +1,33 @@
 package lesson_18
 
-open class Dice {
+abstract class Dice(private val numberOfSides: Int) {
 
-    open fun rollDice() = Unit
-
-}
-
-class FourSidedDice : Dice() {
-
-    override fun rollDice() {
-        println((1..4).random())
+    open fun rollDice() {
+        println((1..numberOfSides).random())
     }
 
 }
 
-class SixSidedDice : Dice() {
+class FourSidedDice(numberOfSides: Int = 4) : Dice(numberOfSides) {
 
     override fun rollDice() {
-        println((1..6).random())
+        super.rollDice()
     }
 
 }
 
-class EightSidedDice : Dice() {
+class SixSidedDice(numberOfSides: Int = 6) : Dice(numberOfSides) {
 
     override fun rollDice() {
-        println((1..8).random())
+        super.rollDice()
+    }
+
+}
+
+class EightSidedDice(numberOfSides: Int = 8) : Dice(numberOfSides) {
+
+    override fun rollDice() {
+        super.rollDice()
     }
 
 }
